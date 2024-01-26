@@ -113,7 +113,7 @@ export default function RootLayout({ children }) {
                 {children}
 
               </div>
-              <div className='flex w-0 xl:w-2/5 absolute xl:sticky h-screen  xl:mt-10  top-0 flex-col' >
+              <div className='flex w-0 xl:w-2/5 absolute xl:sticky h-dvh  xl:mt-10  top-0 flex-col' >
                 {/* <GameTable /> */}
                 <Chat />
               </div>
