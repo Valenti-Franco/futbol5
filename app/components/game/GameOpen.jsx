@@ -3,7 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ButtonJoin from "./buttonJoin";
-import GameTeams from "./gameTeams";
+import GameTeams from "./GameTeams";
 import { Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import ResultGame from "./ResultGame";
