@@ -12,7 +12,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const Chat = () => {
   const { theme, setTheme } = useTheme("dark");
-  const [isChat, setIsChat] = useState(false);
+  const [isChat, setIsChat] = useState(true);
 
   useEffect(() => {
     // Función que se ejecutará al cargar la página y cuando cambie el tamaño de la ventana
@@ -21,7 +21,12 @@ const Chat = () => {
       const screenWidth = window.innerWidth;
 
       // Actualizar el estado de isChat según el ancho de la pantalla
-      setIsChat(screenWidth >= 1280);
+      if (
+        screenWidth < 1280 &&
+        !document.activeElement.matches("input[name=message]")
+      ) {
+        setIsChat(false);
+      }
     };
 
     // Agregar un listener para el evento resize
@@ -302,7 +307,6 @@ const Chat = () => {
                 >
                   <input
                     onFocus={() => setIsChat(true)}
-                    // onBlur={() => setIsChat(true)}
                     name="message"
                     onChange={(e) => setNewMessage(e.target.value)}
                     class="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50  focus-visible:ring-offset-2"
