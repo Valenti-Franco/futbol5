@@ -24,7 +24,7 @@ const handler = NextAuth({
             try {
                 await connectDB()
 
-                const res = await axios.post("https://futbol5-one.vercel.app//api/player",
+                const res = await axios.post("https://futbol5-one.vercel.app/api/player",
 
                     {
                         "name": name,

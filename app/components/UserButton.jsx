@@ -30,7 +30,7 @@ const UserButton = () => {
     // console.log(session.user.email);
     try {
       const dataUser = await axios.post(
-        "https://futbol5-one.vercel.app//api/player/getByEmail",
+        "https://futbol5-one.vercel.app/api/player/getByEmail",
         {
           email: session.user.email,
         }

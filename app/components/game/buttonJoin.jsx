@@ -23,7 +23,7 @@ const ButtonJoin = ({ game, GetGame }) => {
   const getUser = async () => {
     try {
       const dataUser = await axios.post(
-        "https://futbol5-one.vercel.app//api/player/getByEmail",
+        "https://futbol5-one.vercel.app/api/player/getByEmail",
         {
           email: session.user.email,
         }
@@ -52,7 +52,7 @@ const ButtonJoin = ({ game, GetGame }) => {
   const finishGame = async (teamA, teamB) => {
     try {
       const response = await axios.put(
-        `https://futbol5-one.vercel.app//api/game/${Game._id}`,
+        `https://futbol5-one.vercel.app/api/game/${Game._id}`,
         {
           teamA: teamA,
           teamB: teamB,
@@ -73,10 +73,10 @@ const ButtonJoin = ({ game, GetGame }) => {
   const handlerGame = async () => {
     try {
       const data = await axios(
-        `https://futbol5-one.vercel.app//api/game/${Game._id}/user/${user._id}`
+        `https://futbol5-one.vercel.app/api/game/${Game._id}/user/${user._id}`
       );
       const game1 = await axios.get(
-        `https://futbol5-one.vercel.app//api/game/${Game._id}`
+        `https://futbol5-one.vercel.app/api/game/${Game._id}`
       );
       setGame(game1.data.data);
 
@@ -98,11 +98,11 @@ const ButtonJoin = ({ game, GetGame }) => {
   const changeOpen = async (open) => {
     try {
       const data = await axios(
-        `https://futbol5-one.vercel.app//api/game/${Game._id}/user/${user._id}/isOpen/${open}`
+        `https://futbol5-one.vercel.app/api/game/${Game._id}/user/${user._id}/isOpen/${open}`
       );
       // console.log(data.data);
       const game1 = await axios.get(
-        `https://futbol5-one.vercel.app//api/game/${Game._id}`
+        `https://futbol5-one.vercel.app/api/game/${Game._id}`
       );
       setGame(game1.data.data);
     } catch (error) {
@@ -113,7 +113,7 @@ const ButtonJoin = ({ game, GetGame }) => {
   const deleteGame = async () => {
     try {
       const data = await axios.delete(
-        `https://futbol5-one.vercel.app//api/game/${Game._id}`,
+        `https://futbol5-one.vercel.app/api/game/${Game._id}`,
         {
           headers: {
             id: `${user._id}`,
@@ -128,11 +128,11 @@ const ButtonJoin = ({ game, GetGame }) => {
   const randomTeam = async () => {
     try {
       const data = await axios(
-        `https://futbol5-one.vercel.app//api/game/${Game._id}/user/${user._id}/random`
+        `https://futbol5-one.vercel.app/api/game/${Game._id}/user/${user._id}/random`
       );
       console.log(data.data);
       const game1 = await axios.get(
-        `https://futbol5-one.vercel.app//api/game/${Game._id}`
+        `https://futbol5-one.vercel.app/api/game/${Game._id}`
       );
       setGame(game1.data.data);
     } catch (error) {

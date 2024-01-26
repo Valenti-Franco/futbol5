@@ -22,7 +22,7 @@ const GameAllComponent = () => {
   const GetGame = async () => {
     try {
       const gameData = await axios.get(
-        "https://futbol5-one.vercel.app//api/game"
+        "https://futbol5-one.vercel.app/api/game"
       );
 
       // console.log(gameData.data);
