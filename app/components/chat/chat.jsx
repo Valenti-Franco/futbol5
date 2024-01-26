@@ -79,7 +79,7 @@ const Chat = () => {
   const getUser = async () => {
     try {
       const dataUser = await axios.post(
-        "http://localhost:3000/api/player/getByEmail",
+        "https://futbol5-one.vercel.app//api/player/getByEmail",
         {
           email: session.user.email,
         }

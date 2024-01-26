@@ -35,7 +35,7 @@ const CreateGameComponent = () => {
     // console.log(session.user.email);
     try {
       const dataUser = await axios.post(
-        "http://localhost:3000/api/player/getByEmail",
+        "https://futbol5-one.vercel.app//api/player/getByEmail",
         {
           email: session.user.email,
         }
@@ -50,7 +50,7 @@ const CreateGameComponent = () => {
   const handlerPostGame = async () => {
     try {
       const data = await axios.post(
-        "http://localhost:3000/api/game",
+        "https://futbol5-one.vercel.app//api/game",
         {
           site: selectedSite,
           urlMap: selectedLink,

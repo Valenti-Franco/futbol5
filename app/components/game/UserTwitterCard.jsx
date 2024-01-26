@@ -21,7 +21,7 @@ export const UserTwitterCard = ({ user, image }) => {
     // console.log(user._id);
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/player/${user._id}`,
+        `https://futbol5-one.vercel.app//api/player/${user._id}`,
         {
           name: name,
         }

@@ -21,7 +21,9 @@ const GameAllComponent = () => {
 
   const GetGame = async () => {
     try {
-      const gameData = await axios.get("http://localhost:3000/api/game");
+      const gameData = await axios.get(
+        "https://futbol5-one.vercel.app//api/game"
+      );
 
       // console.log(gameData.data);
       setgame(gameData.data.data);
