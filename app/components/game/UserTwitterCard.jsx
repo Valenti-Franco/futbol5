@@ -20,12 +20,9 @@ export const UserTwitterCard = ({ user, image }) => {
   const PostName = async () => {
     // console.log(user._id);
     try {
-      const response = await axios.post(
-        `https://futbol5-one.vercel.app/api/player/${user._id}`,
-        {
-          name: name,
-        }
-      );
+      const response = await axios.post(`/api/player/${user._id}`, {
+        name: name,
+      });
       setchangeName(false);
       toast("Nombre cambiado: " + response.data.data.name);
       console.log(response.data.data.name);

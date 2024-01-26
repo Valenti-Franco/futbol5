@@ -27,9 +27,7 @@ const GameOpen = ({ idGame }) => {
 
   const GetGame = async () => {
     try {
-      const gameData = await axios.get(
-        `http://localhost:3000/api/game/${idGame.id}`
-      );
+      const gameData = await axios.get(`/api/game/${idGame.id}`);
 
       // console.log(gameData.data);
       setgame(gameData.data.data);
@@ -42,9 +40,7 @@ const GameOpen = ({ idGame }) => {
 
   async function fetchPlayerData(playerId) {
     try {
-      const response = await axios.get(
-        `http://localhost:3000/api/player/${playerId}`
-      );
+      const response = await axios.get(`/api/player/${playerId}`);
       // console.log(response.data);
       return response.data; // Puedes personalizar según la respuesta real de tu API
     } catch (error) {

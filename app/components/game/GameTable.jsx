@@ -7,8 +7,9 @@ const GameTable = async () => {
   const page = 1; // Página actual
   const pageSize = 10; // Tamaño de página
   let game;
+
   try {
-    game = await axios.put(`https://futbol5-one.vercel.app/api/player`, {
+    game = await axios.put(`${process.env.URL}/api/player`, {
       page: page,
       pageSize: pageSize,
     });

@@ -34,12 +34,9 @@ const CreateGameComponent = () => {
   const getUser = async () => {
     // console.log(session.user.email);
     try {
-      const dataUser = await axios.post(
-        "https://futbol5-one.vercel.app/api/player/getByEmail",
-        {
-          email: session.user.email,
-        }
-      );
+      const dataUser = await axios.post(`/api/player/getByEmail`, {
+        email: session.user.email,
+      });
 
       setuser(dataUser.data);
     } catch (error) {
@@ -50,7 +47,7 @@ const CreateGameComponent = () => {
   const handlerPostGame = async () => {
     try {
       const data = await axios.post(
-        "https://futbol5-one.vercel.app/api/game",
+        `/api/game`,
         {
           site: selectedSite,
           urlMap: selectedLink,

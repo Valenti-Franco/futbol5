@@ -23,16 +23,13 @@ const GameTeams = ({ game, allPlayersData }) => {
 
   const handlerTeam = async (team) => {
     try {
-      const dataUser = await axios.post(
-        "https://futbol5-one.vercel.app/api/player/getByEmail",
-        {
-          email: session.user.email,
-        }
-      );
+      const dataUser = await axios.post(`/api/player/getByEmail`, {
+        email: session.user.email,
+      });
 
       try {
         const data = await axios(
-          `https://futbol5-one.vercel.app/api/game/${game._id}/user/${dataUser.data.data._id}/${team}`
+          `/api/game/${game._id}/user/${dataUser.data.data._id}/${team}`
         );
         if (data.data.status !== 200) {
           toast.error(data.data.data);

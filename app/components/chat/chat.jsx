@@ -78,12 +78,9 @@ const Chat = () => {
 
   const getUser = async () => {
     try {
-      const dataUser = await axios.post(
-        "https://futbol5-one.vercel.app/api/player/getByEmail",
-        {
-          email: session.user.email,
-        }
-      );
+      const dataUser = await axios.post(`/api/player/getByEmail`, {
+        email: session.user.email,
+      });
 
       setuser(dataUser.data);
 
