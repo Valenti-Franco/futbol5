@@ -118,6 +118,7 @@ const Chat = () => {
     } else if (!session?.user?.email) {
       signIn();
     }
+    setIsChat(true);
 
     setNewMessage("");
   };
