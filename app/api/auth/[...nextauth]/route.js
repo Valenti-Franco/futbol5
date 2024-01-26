@@ -26,7 +26,7 @@ const handler = NextAuth({
             try {
                 await connectDB()
 
-                const res = await axios.post(`/api/player`,
+                const res = await axios.post(`${process.env.URL}/api/player`,
 
                     {
                         "name": name,
