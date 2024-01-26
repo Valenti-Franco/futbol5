@@ -13,6 +13,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const Chat = () => {
   const { theme, setTheme } = useTheme("dark");
   const [isChat, setIsChat] = useState(true);
+  const [isMobile, setisMobile] = useState(false);
 
   useEffect(() => {
     // Función que se ejecutará al cargar la página y cuando cambie el tamaño de la ventana
@@ -25,7 +26,10 @@ const Chat = () => {
         screenWidth < 1280 &&
         !document.activeElement.matches("input[name=message]")
       ) {
-        setIsChat(false);
+        if (!isMobile) {
+          setisMobile(true);
+          setIsChat(false);
+        }
       }
     };
 
