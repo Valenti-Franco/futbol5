@@ -160,14 +160,14 @@ const Chat = () => {
             animate={{ x: -5 }}
             exit={{ x: -100 + "vw" }}
             transition={{ duration: 0.3 }}
-            className="h-full w-[calc(100vw-4rem)] z-20 absolute xl:sticky xl:w-full "
+            className="h-dvh w-[calc(100vw-4rem)] z-20 absolute xl:sticky xl:w-full "
           >
             <div
               style={{
                 background: theme === "light" ? "#fff" : "#222",
                 color: theme === "light" ? "#000" : "#fff",
               }}
-              class=" bottom-[calc(4rem+1.5rem)] vh:h-3/4 h-full right-0 xl:mr-4  p-6 rounded-lg border border-[#e5e7eb] "
+              class=" bottom-[calc(4rem+1.5rem)] vh:h-3/4 h-dvh  right-0 xl:mr-4  p-6 rounded-lg border border-[#e5e7eb] "
             >
               <div className="block  xl:hidden   absolute  right-10">
                 <Button
