@@ -9,26 +9,24 @@ import axios from "axios";
 import { useTheme } from "next-themes";
 import { Button } from "@nextui-org/react";
 import { AnimatePresence, motion } from "framer-motion";
-
+import ButtonChat from "./ButtonChat";
+import useStore from "@/app/ChatContext";
 const Chat = () => {
+  const { isChat, setIsChat } = useStore();
   const { theme, setTheme } = useTheme("dark");
-  const [isChat, setIsChat] = useState(true);
   const [isMobile, setisMobile] = useState(false);
 
   useEffect(() => {
     // Función que se ejecutará al cargar la página y cuando cambie el tamaño de la ventana
+
     const handleResize = () => {
       // Verificar el ancho de la pantalla
       const screenWidth = window.innerWidth;
 
       // Actualizar el estado de isChat según el ancho de la pantalla
-      if (
-        screenWidth < 1280 &&
-        !document.activeElement.matches("input[name=message]")
-      ) {
+      if (screenWidth < 1280 && !document.activeElement.matches("form")) {
         if (!isMobile) {
           setisMobile(true);
-          setIsChat(false);
         }
       }
     };
@@ -118,7 +116,6 @@ const Chat = () => {
     } else if (!session?.user?.email) {
       signIn();
     }
-    setIsChat(true);
 
     setNewMessage("");
   };
@@ -138,38 +135,13 @@ const Chat = () => {
 
   return (
     <>
-      <Button
-        className="absolute "
-        onClick={() => setIsChat(!isChat)}
-        isIconOnly
-        color="warning"
-        variant="faded"
-        aria-label="Like"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-messages"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
-          <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
-        </svg>
-      </Button>
       <AnimatePresence>
         {isChat ? (
           <motion.div
-            initial={{ x: -100 + "vw" }}
-            animate={{ x: -5 }}
-            exit={{ x: -100 + "vw" }}
-            transition={{ duration: 0.3 }}
+            initial={{ x: 300 }}
+            animate={{ x: 15 }}
+            exit={{ x: 300 }}
+            transition={{ duration: 0.6 }}
             className="h-dvh w-[calc(100vw-4rem)] z-20 absolute xl:sticky xl:w-full "
           >
             <div
@@ -311,7 +283,6 @@ const Chat = () => {
                   class="flex items-center justify-center w-full space-x-2"
                 >
                   <input
-                    onFocus={() => setIsChat(true)}
                     name="message"
                     onChange={(e) => setNewMessage(e.target.value)}
                     class="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50  focus-visible:ring-offset-2"

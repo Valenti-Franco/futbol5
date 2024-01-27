@@ -6,6 +6,9 @@ import UserButton from './components/UserButton'
 import Link from 'next/link'
 import BtnDarkMode from './components/BtnDarkMode'
 import { Avatar, Button, Tooltip } from '@nextui-org/react'
+import ButtonChat from './components/chat/ButtonChat'
+import ChatContext from './ChatContext'
+import ChatButtonComponent from './components/chat/ChatButtonComponent';
 
 
 
@@ -21,7 +24,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
 
-      <body className={inter.className}><Providers>
+      <body style={{ width: "100vw", contain: "content" }} className={inter.className}><Providers>
         <div className="h-screen w-full  relative flex overflow-hidden">
 
 
@@ -30,7 +33,26 @@ export default function RootLayout({ children }) {
             {/* <div className="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
             </div> */}
+            <Tooltip
+              showArrow
+              placement="right"
+              content="Chat Online"
+              classNames={{
+                base: [
+                  // arrow color
+                  "before:bg-neutral-400 dark:before:bg-white",
+                ],
+                content: [
+                  "py-2 px-4 shadow-xl",
+                  "text-black bg-gradient-to-br from-white to-neutral-400",
+                ],
+              }}
+            >
+              <div className="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear ">
 
+                <ButtonChat />
+              </div>
+            </Tooltip>
             <Tooltip
               showArrow
               placement="right"
@@ -104,7 +126,7 @@ export default function RootLayout({ children }) {
             </header>
 
 
-            <main className="max-w-full h-full flex relative overflow-y-hidden">
+            <main className="max-w-full h-full flex relative overflow-y-hidden overflow-x-hidden">
 
               <div className="h-full w-full xl:m-4 flex flex-wrap items-start justify-around  rounded-tl grid-flow-col auto-cols-max gap-4 ">
 
@@ -113,10 +135,9 @@ export default function RootLayout({ children }) {
                 {children}
 
               </div>
-              <div className='flex h-dvh w-0 xl:w-2/5 absolute xl:sticky   xl:mt-10  top-0 flex-col' >
-                {/* <GameTable /> */}
-                <Chat />
-              </div>
+              {/* <GameTable /> */}
+              <ChatButtonComponent />
+
             </main>
           </div>
 

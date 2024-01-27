@@ -7,7 +7,7 @@ import axios from "axios"
 
 export const PUT = async (req) => {
     await connectDB();
-    console.log("xd")
+
     try {
         const body = await req.json()
         const page = parseInt(body.page) || 1; // Página actual, por defecto 1
